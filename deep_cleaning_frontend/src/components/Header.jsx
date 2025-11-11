@@ -13,7 +13,7 @@ function Header(){
             <h1 className="text-2xl text-black font-bold md:text-5xl">Best Deep Cleaning in Kottayam</h1>
             
             <p className="text-xs md:text-base">Why go else where when we have the best proffesionals in the deep cleaning space</p>
-            <button className="text-xs text-white w-fit bg-sky-400 p-2 rounded-2xl mt-2 md:text-lg md:rounded-4xl">Get started</button>
+            <button className="text-xs text-white w-fit bg-sky-400 p-2 rounded-2xl mt-2 md:text-lg md:rounded-4xl">Book Now</button>
             </div>
             
                
