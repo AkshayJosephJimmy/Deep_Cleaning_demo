@@ -8,7 +8,7 @@ function Header(){
 
     return(
         <div className="w-full h-60 p-4 bg-linear-to-r from-gray-100 to-green-200 flex md:justify-between items-center ">
-            <div className="flex flex-col gap-2 md:ml-50">
+            <div className="flex flex-col gap-2 md:ml-20">
 
             <h1 className="text-2xl text-black font-bold md:text-5xl">Best Deep Cleaning in Kottayam</h1>
             

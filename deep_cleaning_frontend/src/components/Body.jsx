@@ -1,3 +1,4 @@
+import Banner from "./Banner";
 import Hero from "./Hero";
 import Services from "./Services";
 
@@ -10,6 +11,7 @@ function Body() {
     <div className="bg-gray-50" >
       <Hero />
       <Services />
+      <Banner />
     </div>
   )
 }
