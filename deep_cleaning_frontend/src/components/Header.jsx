@@ -1,4 +1,6 @@
 import svgLogo from "/Users/akshayjosephjimmy/deep_cleaning_demo/deep_cleaning_frontend/src/assets/cleaning service-bro.svg"
+import { MdAccountCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 
@@ -13,13 +15,14 @@ function Header(){
             <h1 className="text-2xl text-black font-bold md:text-5xl">Best Deep Cleaning in Kottayam</h1>
             
             <p className="text-xs md:text-base">Why go else where when we have the best proffesionals in the deep cleaning space</p>
-            <button className="text-xs text-white w-fit bg-sky-400 p-2 rounded-2xl mt-2 md:text-lg md:rounded-4xl">Book Now</button>
+            <Link to={"/booking"}><button className="text-xs text-white w-fit bg-sky-400 p-2 rounded-2xl mt-2 md:text-lg md:rounded-4xl hover:bg-green-500 transition-all duration-300">Book Now</button></Link>
             </div>
             
                
                 
                 
-            <img src={svgLogo} alt="logo" className="w-40 h-40 md:size-100"/>
+            <img src={svgLogo} alt="logo" className="w-40 h-40 p-6 md:size-100"/>
+            
             
             
         </div>
