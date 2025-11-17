@@ -1,3 +1,4 @@
+import GoogleLogin from "./GoogleLogin";
 
 
 
@@ -12,6 +13,7 @@ function Signin() {
             <input type="password" placeholder="Password" className="w-64 p-2 mb-4 border border-gray-300 rounded"/>
             <input type="password" placeholder="Confirm Password" className="w-64 p-2 mb-4 border border-gray-300 rounded"/>
             <button type="submit" className="w-64 p-2 bg-sky-400 text-white mt-3 rounded hover:bg-green-500 transition-all duration-300">Sign In</button>
+        <GoogleLogin/>
 
         </form>
 
@@ -21,6 +23,8 @@ function Signin() {
 }
 
 export default Signin;
+
+//90552372382-lrce96g69748g7br4ncosq9qq9ktn6fi.apps.googleusercontent.com
 
 
 
