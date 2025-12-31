@@ -1,16 +1,22 @@
 
 import { useEffect } from "react";
 import React from "react";
+import axios from "axios";
 
 
 function GoogleLogin() {
 
 const handleCallback=(response)=>{
-console.log(response.credential);
 
-
-
-
+axios.post("http://localhost:5001/auth/google",{
+    credential:response.credential},
+  {headers: { "Content-Type": "application/json" }})
+.then((res)=>{
+  console.log('this is the response');
+    console.log(res.data)})
+.catch((err)=>{
+  console.log('this is the error');
+    console.log(err)});  
 
 
 }
