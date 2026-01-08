@@ -6,7 +6,7 @@ import authGoogleController from '../controllers/authGoogleController.js';
 const authRouter=express.Router();
 
 
-authRouter.post('/google',(authGoogleController));
+authRouter.post('/google',authGoogleController);
 
 
 export default authRouter;

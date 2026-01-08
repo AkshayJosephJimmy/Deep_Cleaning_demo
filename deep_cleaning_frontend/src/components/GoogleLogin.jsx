@@ -2,21 +2,29 @@
 import { useEffect } from "react";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 
 function GoogleLogin() {
+  const navigate=useNavigate();
 
 const handleCallback=(response)=>{
 
+  console.log(response.credential);
 axios.post("http://localhost:5001/auth/google",{
     credential:response.credential},
   {headers: { "Content-Type": "application/json" }})
 .then((res)=>{
   console.log('this is the response');
-    console.log(res.data)})
+    console.log(res.data)
+    navigate('/booking');  
+  })
+    
 .catch((err)=>{
-  console.log('this is the error');
-    console.log(err)});  
+  
+    console.log(err.response?.status);
+  console.log(err.response?.data);});  
 
 
 }

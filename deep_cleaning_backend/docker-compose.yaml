@@ -1,0 +1,29 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: deep_cleaning_backend_app
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://user:password@db:5432/deep_cleaning_db
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+  
+  db:
+    image: postgres:13-alpine
+    container_name: deep_cleaning_db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=deep_cleaning_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
