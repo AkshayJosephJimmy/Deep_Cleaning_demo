@@ -4,7 +4,7 @@ import GoogleLogin from "./GoogleLogin";
 
 function Signin() {
   return (
-    <div className="w-full flex h-screen bg-sky-300">
+   
       <div className=" w-80 h-120  m-auto bg-gray-200 ">
         <form className="flex flex-col justify-center items-center p-5">
             <h2 className="text-2xl font-bold mb-4">Sign In</h2>
@@ -18,7 +18,7 @@ function Signin() {
         </form>
 
       </div>
-    </div>
+   
   );
 }
 
