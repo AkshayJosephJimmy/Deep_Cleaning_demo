@@ -2,6 +2,7 @@ import express from 'express';
 
 import cors from 'cors';
 import authRouter from './routes/auth.Router.js';
+import bookingRouter from './routes/booking.Router.js'
 
 
 const app=express();
@@ -18,12 +19,13 @@ app.use(
         methods: ["GET", "POST", "PUT", "DELETE","OPTIONS"],
         allowedHeaders: ["Authorization", "Content-Type"],
         
-
+        
     })
 );
 
 app.use(express.json());
 app.use('/auth',authRouter);
+app.use('/api',bookingRouter)
 
 
 

@@ -18,6 +18,8 @@ axios.post("http://localhost:5001/auth/google",{
 .then((res)=>{
   console.log('this is the response');
     console.log(res.data)
+    localStorage.setItem("token",res.data.token);
+    console.log(localStorage.getItem("token"));
     navigate('/booking');  
   })
     

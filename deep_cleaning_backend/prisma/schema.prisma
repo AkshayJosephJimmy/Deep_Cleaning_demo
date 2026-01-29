@@ -24,13 +24,32 @@ enum Auth_provider{
 
 model User{
   
-  id    Int   @id @default(autoincrement())
+  id    String   @id @default(uuid())
   email String @unique
   username    String   
+  booking     Booking[]
   profile_pic   String 
   createdat   DateTime    @default(now())
   auth_provider Auth_provider
   password String 
   
+
+}
+model Booking{
+id        String    @id @default(uuid()) 
+userId    String
+user      User        @relation(fields:[userId], references:[id])
+serviceType    String
+address   String
+phoneNum  String
+email     String
+date      DateTime
+
+
+
+
+
+
+
 
 }

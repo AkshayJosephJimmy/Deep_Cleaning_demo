@@ -2,6 +2,7 @@ import {OAuth2Client} from 'google-auth-library';
 import dotenv from 'dotenv';
 dotenv.config();
 import prisma from '../prismaClient.js';
+import jwtgeneration  from '../utils/jwtgeneration.js';
 
 
 
@@ -18,6 +19,7 @@ let payload;
 
 
 
+
 try{
 const ticket=await client.verifyIdToken({
     idToken:token,
@@ -29,31 +31,36 @@ const ticket=await client.verifyIdToken({
 
 }
 
-
+console.log('Payload extracted:', payload);
      
    try {
   const user = await prisma.user.findUnique({
     where: { email: payload.email }
   });
 
-  if (user) {
+  if (!user) {
     
-    return res.status(200).json({ message: "User already exists", user });
+    
+    
+    const newUser = await prisma.user.create({
+      data: {
+        email: payload.email,
+        username: payload.name,
+        profile_pic: payload.picture,
+        auth_provider: 'google',
+        password: "" // No password for Google-authenticated users,
+        
+      }
+    });
+    const token = jwtgeneration(newUser);
+    return res.status(201).json({ message: "User created successfully", newUser ,token});
+  }else{
+    const token = jwtgeneration(user);
+    return res.status(200).json({ message: "User logged in successfully", user, token });
   }
-
-  const newUser = await prisma.user.create({
-    data: {
-      email: payload.email,
-      username: payload.name,
-      profile_pic: payload.picture,
-      auth_provider: 'google',
-      password: "" // No password for Google-authenticated users,
-
-    }
-  });
   
 
-  return res.status(201).json({ message: "User created successfully", newUser });
+
 
 } catch (err) {
   console.error(err);
