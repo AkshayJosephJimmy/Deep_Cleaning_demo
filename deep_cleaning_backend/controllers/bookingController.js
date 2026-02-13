@@ -3,7 +3,8 @@ import prisma from '../prismaClient.js';
 async function bookingController(req,res){
 
 const details=req.body;
-
+console.log("Booking details received:", details);
+console.log("hwllo",req.user);
 
 try{
 

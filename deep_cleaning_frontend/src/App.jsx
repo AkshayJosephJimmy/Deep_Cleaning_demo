@@ -5,16 +5,18 @@ import BookingPage from "./components/BookingPage"
 import AccountHeader from "./components/AccountHeader"
 import Signin from "./components/Signin"
 import RegisterCard from "./components/RegisterCard"
+import { AuthProvider } from "./context/AuthProvider"
 
 
 
 
 
-function App(){
-
-  
+function App()
+{
 
   return(
+    <AuthProvider>
+
     <div >
       
       <Routes>
@@ -25,6 +27,7 @@ function App(){
       
       
     </div>
+    </AuthProvider>
   )
 }
 export default App

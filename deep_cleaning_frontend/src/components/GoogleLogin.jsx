@@ -3,10 +3,13 @@ import { useEffect } from "react";
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext.jsx";
 
 
 
 function GoogleLogin() {
+  const {login}=useContext(AuthContext);
   const navigate=useNavigate();
 
 const handleCallback=(response)=>{
@@ -18,8 +21,10 @@ axios.post("http://localhost:5001/auth/google",{
 .then((res)=>{
   console.log('this is the response');
     console.log(res.data)
-    localStorage.setItem("token",res.data.token);
+    
     console.log(localStorage.getItem("token"));
+    
+    login(res.data.token);
     navigate('/booking');  
   })
     

@@ -9,4 +9,5 @@ const authRouter=express.Router();
 authRouter.post('/google',authGoogleController);
 
 
+
 export default authRouter;
