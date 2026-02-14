@@ -20,6 +20,7 @@ function BookingPage(){
 
     const handlebooking=(e)=>{
        e.preventDefault();
+
         axios.post('http://localhost:5001/api/bookings', {
             serviceType:serviceType,
             username:name,
@@ -57,7 +58,7 @@ function BookingPage(){
 
             <form className="flex flex-col gap-2 w-fit mx-auto" onSubmit={handlebooking}>
                 <label>Service type:</label>
-                <select className="border rounded-lg p-1" value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
+                <select className="border rounded-lg p-1" required value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
                     <option value="Standard Cleaning">Standard Cleaning</option>
                     <option value="Deep Cleaning">Deep Cleaning</option>
                     <option value="Home Cleaning">Home Cleaning</option>
@@ -65,16 +66,16 @@ function BookingPage(){
                     <option value="Move-in/Move-out Cleaning">Move-in/Move-out Cleaning</option>
                 </select>
                 <label className="text-lg"for="name">Name:</label>
-                <input className="border rounded-lg p-1"type="text" id="name" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} />
+                <input className="border rounded-lg p-1"type="text" required id="name" placeholder="Name" onChange={(e) => setName(e.target.value)} value={name} />
                 <label className="text-lg"for="address">Address:</label>
                 
-                <input className="border rounded-lg p-1"type="text" id="address" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+                <input className="border rounded-lg p-1"type="text" id="address" required  placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
                 <label className="text-lg"for="phone">Phone Number:</label>
-                <input className="border rounded-lg p-1"type="text" id="phone" placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                <input className="border rounded-lg p-1"type="text" id="phone" required placeholder="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                 <label className="text-lg"for="email">Email (optional):</label>
-                <input className="border rounded-lg p-1"type='email' id="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input className="border rounded-lg p-1"type='email' id="email" required  placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <label className="text-lg"for="date">Preferred Date:</label>
-                <input className="border rounded-lg p-1"type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                <input className="border rounded-lg p-1"type="date" id="date"  required value={date} onChange={(e) => setDate(e.target.value)} />
                 <button type="submit" className="w-full p-2 bg-sky-400 text-white mt-3 rounded hover:bg-green-500 transition-all duration-300" value="Book Now"
                 >Book Now</button>
             </form>
