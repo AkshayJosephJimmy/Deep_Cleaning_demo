@@ -1,7 +1,12 @@
 import GoogleLogin from "./GoogleLogin";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Login() {
+  const navigate=useNavigate();
   const [username,setUsername]=useState('');
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
@@ -17,7 +22,7 @@ function Login() {
       console.log(response.data);
       localStorage.setItem("token",response.data.token);
       console.log(localStorage.getItem("token"));
-      navigate('/booking');  
+      navigate('/');  
     }).catch((error)=>{
       console.error("Login error:", error);
       alert("Login failed. Please check your credentials and try again.");

@@ -6,6 +6,9 @@ import AccountHeader from "./components/AccountHeader"
 import Signin from "./components/Signin"
 import RegisterCard from "./components/RegisterCard"
 import { AuthProvider } from "./context/AuthProvider"
+import { useContext } from "react"
+import AuthContext from "./context/AuthContext.jsx"
+import Dashboard from "./components/Dashboard.jsx"
 
 
 
@@ -13,21 +16,32 @@ import { AuthProvider } from "./context/AuthProvider"
 
 function App()
 {
+  const {provider}=useContext(AuthContext);
 
   return(
-    <AuthProvider>
-
+   <>
+     {provider==="google" ?
     <div >
+
       
       <Routes>
         <Route path="/" element={ <><Header /> <Body /></>} />
         <Route path="/booking" element={<><AccountHeader/><BookingPage/></>} />
         <Route path="/signin" element={<RegisterCard/>}/>
       </Routes>
+
       
       
-    </div>
-    </AuthProvider>
+    </div>:<div>
+       <Routes>
+        <Route path="/" element={ <><AccountHeader/><Dashboard/></>} />
+        <Route path="/signin" element={<RegisterCard/>}/>
+        
+      </Routes>
+
+      </div>}
+   </>
+    
   )
 }
 export default App

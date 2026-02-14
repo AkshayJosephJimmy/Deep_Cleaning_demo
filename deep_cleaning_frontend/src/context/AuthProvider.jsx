@@ -9,6 +9,7 @@ export function AuthProvider({children}){
 
     const[user,setUser]=useState(null);
     const[profile,setProfile]=useState(null);
+    const[provider,setProvider]=useState(null);
     const [token,setToken]=useState(localStorage.getItem("token"));
      const login = (newToken) => {
         localStorage.setItem("token", newToken);
@@ -28,6 +29,7 @@ export function AuthProvider({children}){
         console.log("Profile data:", response.data);
         setUser(response.data.username);
         setProfile(response.data.profile_pic);
+        setProvider(response.data.auth_provider);
         
     }).catch((error)=>{
         console.error("Error fetching profile:", error);
@@ -37,7 +39,7 @@ export function AuthProvider({children}){
    
 
     return(
-        <AuthContext.Provider value={{user,profile,login}}>
+        <AuthContext.Provider value={{user,profile,login,provider}}>
             {children}
         </AuthContext.Provider>
     )
