@@ -1,5 +1,6 @@
 import  bookingController  from '../controllers/bookingController.js';
 import  verifyToken  from '../middelwares/auth.middleware.js';
+import getBookingsController from '../controllers/getBookingController.js';
 
 
 import express from 'express';
@@ -8,5 +9,6 @@ import express from 'express';
 const bookingRouter=express.Router();
 
 bookingRouter.post('/bookings',verifyToken,bookingController);
+bookingRouter.get('/getBookings',verifyToken,getBookingsController);
 
 export default bookingRouter;
