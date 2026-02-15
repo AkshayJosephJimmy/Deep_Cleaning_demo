@@ -21,6 +21,10 @@ enum Auth_provider{
   google
   local
 }
+enum Role{
+  admin
+  customer
+}
 
 model User{
   
@@ -31,6 +35,7 @@ model User{
   profile_pic   String 
   createdat   DateTime    @default(now())
   auth_provider Auth_provider
+  role          Role    @default(customer)
   password String 
   
 

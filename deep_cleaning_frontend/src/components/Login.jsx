@@ -2,31 +2,43 @@ import GoogleLogin from "./GoogleLogin";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext.jsx";
 
 
 
 function Login() {
   const navigate=useNavigate();
+  const {login}=useContext(AuthContext);
   const [username,setUsername]=useState('');
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+    const[token,setToken]=useState(localStorage.getItem("token"));
 
   function handleSubmit(e){
     e.preventDefault();
+
+   
+
+      axios.post("http://localhost:5001/auth/login", {
+        username: username,
+        email: email,
+        password: password
+      }).then((response)=>{
+        console.log(response.data);
+        localStorage.setItem("token", response.data.token);
+        setToken(response.data.token);
+        
+        console.log(token);
+        login(response.data.token);
+        
+        navigate('/');  
+      }).catch((error)=>{
+        console.error("Login error:", error);
+        alert("Login failed. Please check your credentials and try again.");
+      });
     
-    axios.post("http://localhost:5001/auth/login", {
-      username: username,
-      email: email,
-      password: password
-    }).then((response)=>{
-      console.log(response.data);
-      localStorage.setItem("token",response.data.token);
-      console.log(localStorage.getItem("token"));
-      navigate('/');  
-    }).catch((error)=>{
-      console.error("Login error:", error);
-      alert("Login failed. Please check your credentials and try again.");
-    });
   }
   return (
      

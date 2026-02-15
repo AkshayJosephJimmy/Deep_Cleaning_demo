@@ -16,11 +16,12 @@ import Dashboard from "./components/Dashboard.jsx"
 
 function App()
 {
-  const {provider}=useContext(AuthContext);
+  const {role}=useContext(AuthContext);
+  console.log("User role in App.jsx:", role);
 
   return(
    <>
-     {provider==="google" ?
+     {role==="customer" ?
     <div >
 
       
