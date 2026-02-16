@@ -49,6 +49,7 @@ console.log('Payload extracted:', payload);
         profile_pic: payload.picture,
         auth_provider: 'google',
         password: "" ,// No password for Google-authenticated users,
+        
         role:"customer"
         
       }

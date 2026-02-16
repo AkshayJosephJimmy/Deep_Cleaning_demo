@@ -25,30 +25,36 @@ enum Role{
   admin
   customer
 }
+enum BookingStatus{
+  pending
+  halt
+  confirmed
+}
 
 model User{
   
-  id    String   @id @default(uuid())
-  email String @unique
-  username    String   
-  booking     Booking[]
-  profile_pic   String 
-  createdat   DateTime    @default(now())
-  auth_provider Auth_provider
-  role          Role    @default(customer)
-  password String 
+  id              String   @id @default(uuid())
+  email           String @unique
+  username        String   
+  booking         Booking[]
+  profile_pic     String 
+  createdat       DateTime    @default(now())
+  auth_provider   Auth_provider
+  role            Role    @default(customer)
+  password        String 
   
 
 }
 model Booking{
-id        String    @id @default(uuid()) 
-userId    String
-user      User        @relation(fields:[userId], references:[id])
-serviceType    String
-address   String
-phoneNum  String
-email     String
-date      DateTime
+id                String    @id @default(uuid()) 
+userId            String
+user              User        @relation(fields:[userId], references:[id])
+serviceType       String
+address           String
+phoneNum          String
+bookingStatus     BookingStatus  @default(pending)
+email             String
+date              DateTime
 
 
 

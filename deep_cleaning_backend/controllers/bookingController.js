@@ -16,9 +16,11 @@ try{
            address:details.address,
            phoneNum:details.phoneNum,
            email:details.email,
-           date:details.date
+           date:details.date,
+          
         }
     })
+    console.log("CREATED BOOKING:", newBooking);
 
     res.status(201).json({
         message:"Booking created successfully",

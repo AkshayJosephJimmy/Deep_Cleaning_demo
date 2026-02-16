@@ -13,6 +13,7 @@ useEffect(() => {
         }
     }).then((response) => {
         console.log("Booking data:", response.data);
+        console.log("status of the booking",response.data.bookingStatus);
         setBookings(response.data);
     }).catch((error) => {
         console.error("Error fetching booking data:", error);

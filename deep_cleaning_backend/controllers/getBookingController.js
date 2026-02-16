@@ -9,6 +9,7 @@ async function getBookingsController(req, res) {
             include:{user:true}
         });
         console.log("Bookings retrieved:", bookings);
+        console.log('booking status:', bookings.map(b => b.bookingStatus));
         res.json(bookings);
     }catch(error){
         console.error("Error retrieving bookings:", error);
