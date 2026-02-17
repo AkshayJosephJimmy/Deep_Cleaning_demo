@@ -4,8 +4,8 @@ import { useState } from "react";
 import axios from 'axios'
 import { MdDeleteForever } from "react-icons/md";
 function BookingTable() {
-
-  const bookings=useBookingData();
+  const [deleteBooking,setDelete]=useState(false);
+  const {bookings,setBookings}=useBookingData();
   console.log("Bookings in Dashboard:", bookings);
   console.log("Status",bookings.bookingStatus);
   const [selectedStatus, setSelectedStatus] = useState("pending");
@@ -42,6 +42,7 @@ axios.delete(`http://localhost:5001/api/deleteBooking/${bookingId}`,{
 
 }).then((response)=>{
     console.log("Booking deleted successfully:", response.data);
+    setBookings(prevBookings => prevBookings.filter(booking => booking.id !== bookingId));
 }).catch((error)=>{
     console.error("Error deleting booking:", error);
     alert("Failed to delete booking. Please try again.");

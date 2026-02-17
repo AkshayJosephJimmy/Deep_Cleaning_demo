@@ -19,6 +19,6 @@ useEffect(() => {
         console.error("Error fetching booking data:", error);
     });
 }, []);
-return bookings;
+return {bookings,setBookings};
 }
 export default useBookingData;
