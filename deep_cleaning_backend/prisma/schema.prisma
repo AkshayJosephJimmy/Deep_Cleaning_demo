@@ -29,6 +29,7 @@ enum BookingStatus{
   pending
   halt
   confirmed
+  completed
 }
 
 model User{
