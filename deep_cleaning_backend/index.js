@@ -17,17 +17,18 @@ const PORT=5001;
 app.use(
     cors({
         origin: "http://localhost:5173",
-        methods: ["GET", "POST", "PUT", "DELETE","OPTIONS"],
+        methods: ["GET", "POST", "PUT", "DELETE","OPTIONS", "PATCH"],
         allowedHeaders: ["Authorization", "Content-Type"],
         
         
     })
 );
+app.options("*", cors()); 
 
 app.use(express.json());
-app.use('/api',bookingRouter)
-app.use('/user',userRouter);
 app.use('/auth',authRouter);
+app.use('/user',userRouter);
+app.use('/api',bookingRouter)
 
 
 
