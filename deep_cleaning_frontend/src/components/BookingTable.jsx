@@ -91,10 +91,10 @@ axios.delete(`http://localhost:5001/api/deleteBooking/${bookingId}`,{
                     <td>
 
                     <select value={booking.bookingStatus} onChange={(e) => handleStatusChange(booking.id, e.target.value)}> 
-                        <option value="pending" >Pending</option>
-                        <option value="confirmed" >Confirmed</option>
-                        <option value="completed" >Completed</option>
-                        <option value="halt" >Halt</option>
+                        <option value="pending" className="bg-gray-500">Pending</option>
+                        <option value="confirmed" className="bg-green-500">Confirmed</option>
+                        <option value="completed" className="bg-blue-500">Completed</option>
+                        <option value="halt" className="bg-red-500">Halt</option>
                         
                         </select>
                     </td>

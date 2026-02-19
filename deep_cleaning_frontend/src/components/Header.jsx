@@ -1,4 +1,4 @@
-import svgLogo from "/Users/akshayjosephjimmy/deep_cleaning_demo/deep_cleaning_frontend/src/assets/cleaning service-bro.svg"
+
 import { MdAccountCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 function Header(){
-
+const svgLogo="/public/cleaning service-bro.svg"
 
     return(
         <div className="w-full h-60 p-4 bg-linear-to-r from-gray-100 to-green-200 flex md:justify-between items-center ">
