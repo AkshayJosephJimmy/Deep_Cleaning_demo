@@ -2,6 +2,7 @@ import prisma from "../prismaClient.js";
 
 
 async function patchBookingStatusController(req,res){
+     console.log("PATCH request hit backend")
 
    const {id}=req.params;
    const {bookingStatus}=req.body;

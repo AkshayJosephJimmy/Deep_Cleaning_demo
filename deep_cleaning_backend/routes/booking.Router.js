@@ -3,16 +3,19 @@ import  verifyToken  from '../middelwares/auth.middleware.js';
 import getBookingsController from '../controllers/getBookingController.js';
 import patchBookingStatusController from '../controllers/patchBookingStatusController.js'
 import deleteBookingController from '../controllers/deleteBookingController.js';
-
-
 import express from 'express';
+import cors from 'cors';
+
+
+
 
 
 const bookingRouter=express.Router();
 
+
 bookingRouter.post('/bookings',verifyToken,bookingController);
 bookingRouter.get('/getBookings',verifyToken,getBookingsController);
-bookingRouter.patch('/updateBookingStatus/:id',verifyToken,patchBookingStatusController);
+//bookingRouter.patch('/updateBookingStatus/:id',patchBookingStatusController);
 bookingRouter.delete('/deleteBooking/:id',verifyToken,deleteBookingController)
 
 export default bookingRouter;

@@ -5,7 +5,9 @@ import axios from 'axios'
 import { MdDeleteForever } from "react-icons/md";
 function BookingTable() {
   const [deleteBooking,setDelete]=useState(false);
+
   const {bookings,setBookings}=useBookingData();
+
   console.log("Bookings in Dashboard:", bookings);
   console.log("Status",bookings.bookingStatus);
   const [selectedStatus, setSelectedStatus] = useState("pending");
@@ -14,18 +16,27 @@ function BookingTable() {
     console.log(`Changing status of booking ${bookingId} to ${newStatus}`);
     console.log("Token being sent:", localStorage.getItem("token"));
 
-    axios.patch(`http://localhost:5001/api/updateBookingStatus/${bookingId}`, {
-        bookingStatus:newStatus
-    },{
-        headers:{
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-          
+    axios.put(`http://localhost:5001/patch/updateBookingStatus/${bookingId}`, {
+        //updateBookingStatus
+    
+        bookingStatus: newStatus
+    }, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
         }
-    }).then((response)=>{
+    ).then((response)=>{
         console.log("Status updated successfully:", response.data);
-        setSelectedStatus(newStatus); // Update local state to reflect the change
+        setSelectedStatus(newStatus);
+        setBookings(prevBookings => prevBookings.map(booking => {
+            if (booking.id === bookingId) {
+                return { ...booking, bookingStatus: newStatus };
+            }
+            return booking;
+        }));
 
-        // Optionally, you could update the local state here to reflect the change immediately
+        
 
     }).catch((error)=>{
         console.error("Error updating status:", error);
@@ -83,7 +94,7 @@ axios.delete(`http://localhost:5001/api/deleteBooking/${bookingId}`,{
                         <option value="pending" >Pending</option>
                         <option value="confirmed" >Confirmed</option>
                         <option value="completed" >Completed</option>
-                        <option value="cancelled" >Cancelled</option>
+                        <option value="halt" >Halt</option>
                         
                         </select>
                     </td>

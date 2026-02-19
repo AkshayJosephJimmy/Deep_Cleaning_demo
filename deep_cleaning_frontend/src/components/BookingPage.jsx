@@ -44,17 +44,24 @@ function BookingPage(){
         }});
 }
     return(
-        <div className="bg-linear-to-r from-gray-100 to-green-200 flex flex-row justify-between h-full">
+        <>
+        <div className="bg-linear-to-r from-gray-100 to-green-200  h-full">
+            
+            <div className="flex flex-col md:flex-row gap-10 items-start justify-between p-10">
+
             <div>
                 <div>
+                    
 
-                <img src={image1} alt="Cleaning Service" className="w-50 h-50 object-cover"/>
+                    <Services/>
+                
                 </div>
-                <p className="text-center text-lg font-semibold">Book a cleaning service today!</p>
+                
             </div>
             
             
-             <div className="p-10  rounded-4xl bg-white shadow-md w-fit">
+             <div className="p-10  rounded-4xl bg-white shadow-md w-fit mt-15 lg:mr-15">
+                <h1 className="text-2xl p-6 font-bold">Book Here</h1>
 
             <form className="flex flex-col gap-2 w-fit mx-auto" onSubmit={handlebooking}>
                 <label>Service type:</label>
@@ -80,8 +87,10 @@ function BookingPage(){
                 >Book Now</button>
             </form>
                 </div>
+                </div>
 
         </div>
+                </>
     )
 }
 export default BookingPage;

@@ -10,8 +10,8 @@ function AccountHeader() {
   const {user}= useContext(AuthContext);
   console.log("User in AccountHeader:", user);
   return (
-    <div  className="w-full h-30 bg-linear-to-r from-gray-100 to-blue-200 shadow-lg  flex justify-center items-center">
-      <h1 className="text-2xl font-bold text-gray-800">Home</h1>
+    <div  className="w-full h-30 bg-sky-400 shadow-lg  flex justify-center items-center">
+      <Link to={"/"}><h1 className="text-2xl font-bold text-gray-800">Home</h1></Link>
       <h1 className="text-2xl font-bold text-gray-800 ml-4">Services</h1>
       <h1 className="text-2xl font-bold text-gray-800 ml-4">Booking</h1>
       <div className=" flex flex-col items-center ml-auto p-3">
