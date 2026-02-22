@@ -1,4 +1,4 @@
-import BookingImg from "/Users/akshayjosephjimmy/deep_cleaning_demo/deep_cleaning_frontend/src/assets/man-cleaning-window.jpg"
+
 
 
 
