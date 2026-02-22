@@ -28,7 +28,7 @@ export function AuthProvider({children}){
             console.log("No token found, skipping profile fetch");
             return;
         }
-    axios.get("http://localhost:5001/user/me",{
+    axios.get("https://deep-cleaning-demo.vercel.app/user/me",{
         headers:{
             Authorization:`Bearer ${token}`
         }

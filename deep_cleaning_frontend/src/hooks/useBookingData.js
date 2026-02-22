@@ -7,7 +7,7 @@ function useBookingData() {
 
 useEffect(() => {
 
-    axios.get('http://localhost:5001/api/getBookings', {
+    axios.get('https://deep-cleaning-demo.vercel.app/api/getBookings', {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
         }
