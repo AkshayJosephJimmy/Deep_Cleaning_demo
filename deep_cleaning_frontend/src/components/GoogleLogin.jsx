@@ -15,7 +15,7 @@ function GoogleLogin() {
 const handleCallback=(response)=>{
 
   console.log(response.credential);
-axios.post("http://localhost:5001/auth/google",{
+axios.post("https://deep-cleaning-backend.onrender.com/auth/google",{
     credential:response.credential},
   {headers: { "Content-Type": "application/json" }})
 .then((res)=>{

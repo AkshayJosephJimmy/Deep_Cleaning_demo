@@ -21,7 +21,7 @@ function BookingPage(){
     const handlebooking=(e)=>{
        e.preventDefault();
 
-        axios.post('http://localhost:5001/api/bookings', {
+        axios.post('https://deep-cleaning-backend.onrender.com/api/bookings', {
             serviceType:serviceType,
             username:name,
             address:address,

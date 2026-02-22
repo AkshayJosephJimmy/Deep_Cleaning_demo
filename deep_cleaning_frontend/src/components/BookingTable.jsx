@@ -16,7 +16,7 @@ function BookingTable() {
     console.log(`Changing status of booking ${bookingId} to ${newStatus}`);
     console.log("Token being sent:", localStorage.getItem("token"));
 
-    axios.put(`http://localhost:5001/patch/updateBookingStatus/${bookingId}`, {
+    axios.put(`https://deep-cleaning-backend.onrender.com/patch/updateBookingStatus/${bookingId}`, {
         //updateBookingStatus
     
         bookingStatus: newStatus
@@ -46,7 +46,7 @@ function BookingTable() {
 
 const handleDeleteBooking=(bookingId)=>{
 
-axios.delete(`http://localhost:5001/api/deleteBooking/${bookingId}`,{
+axios.delete(`https://deep-cleaning-backend.onrender.com/api/deleteBooking/${bookingId}`,{
   headers:{
     Authorization: `Bearer ${localStorage.getItem("token")}`
   }
