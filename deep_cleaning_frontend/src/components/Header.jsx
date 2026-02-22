@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 function Header(){
-const svgLogo="/public/cleaning service-bro.svg"
+const svgLogo="/cleaning service-bro.svg"
 
     return(
         <div className="w-full h-60 p-4 bg-linear-to-r from-gray-100 to-green-200 flex md:justify-between items-center ">
