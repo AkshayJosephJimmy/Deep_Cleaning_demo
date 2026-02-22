@@ -1,4 +1,6 @@
 import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import cors from 'cors';
 import authRouter from './routes/auth.Router.js';
@@ -8,7 +10,7 @@ import patchRouter from './routes/patch.Router.js';
 
 
 const app=express();
-const PORT=5001;
+const PORT=process.env.PORT || 5001;
 
 
 console.log("server is starting...");
