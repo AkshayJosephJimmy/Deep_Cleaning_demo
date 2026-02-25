@@ -21,7 +21,15 @@ function App()
 
   return(
    <>
-     {role==="customer" ?
+     {role==="admin" ?
+     <div>
+       <Routes>
+        <Route path="/" element={ <><AccountHeader/><Dashboard/></>} />
+        <Route path="/signin" element={<RegisterCard/>}/>
+        
+      </Routes>
+
+      </div>:
     <div >
 
       
@@ -33,14 +41,8 @@ function App()
 
       
       
-    </div>:<div>
-       <Routes>
-        <Route path="/" element={ <><AccountHeader/><Dashboard/></>} />
-        <Route path="/signin" element={<RegisterCard/>}/>
-        
-      </Routes>
-
-      </div>}
+    </div>
+      }
    </>
     
   )
