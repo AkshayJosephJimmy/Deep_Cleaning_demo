@@ -18,7 +18,7 @@ function AccountHeader() {
 
       <Link to={"/signin"}><MdAccountCircle size={30} className="ml-4 text-gray-600"/></Link>
       
-      <span className="ml-4 text-sm text-gray-600 ">{user}</span>
+      <span className="ml-4 text-sm text-gray-600 ">{user || "Sign In"}</span>
       </div>
     </div>
   );

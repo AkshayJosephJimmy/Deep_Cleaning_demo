@@ -65,8 +65,9 @@ function BookingPage(){
 
             <form className="flex flex-col gap-2 w-fit mx-auto" onSubmit={handlebooking}>
                 <label>Service type:</label>
-                <select className="border rounded-lg p-1" required value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
-                    <option value="Standard Cleaning">Standard Cleaning</option>
+                <select className="border rounded-lg p-1" defaultValue="" required value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
+                    <option value="" disabled>Select a service</option>
+                    <option value="Standard Cleaning" >Standard Cleaning</option>
                     <option value="Deep Cleaning">Deep Cleaning</option>
                     <option value="Home Cleaning">Home Cleaning</option>
                     <option value="Office Cleaning">Office Cleaning</option>
