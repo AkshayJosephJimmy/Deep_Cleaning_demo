@@ -1,4 +1,4 @@
-
+import prisma from '../prismaClient.js';
 
 
 async function signUpController(req,res){
