@@ -11,6 +11,7 @@ const user=await prisma.user.create({
         username:username,
         password:password,
         auth_provider:"local",
+        profile_pic:"null",
         role:"customer"
     }
 })
