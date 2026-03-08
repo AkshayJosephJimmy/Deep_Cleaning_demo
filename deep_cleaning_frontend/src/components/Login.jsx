@@ -55,6 +55,12 @@ function Login() {
 
         <GoogleLogin/>
         </form>
+         <div className="p-2 fixed top-0 right-100 bg-gray-300  rounded">
+          <p>This is a Demo website and for you to access the Admin dashboard use these credentials:</p>
+          <p>Username: Akshay</p>
+          <p>Email:admin@gmail.com</p>
+          <p>Password: 123</p>
+        </div>
 
       </div>
     
