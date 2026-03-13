@@ -1,32 +1,34 @@
 import { Link } from "react-router-dom";
+import { FaArrowRight, FaPhone } from "react-icons/fa";
 
 function Banner() {
   return (
-    <section className="bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-14 relative overflow-hidden">
-      {/* Decorative circles */}
-      <div className="absolute -top-10 -left-10 w-48 h-48 bg-white/5 rounded-full"></div>
-      <div className="absolute -bottom-8 -right-8 w-36 h-36 bg-white/5 rounded-full"></div>
-      <div className="absolute top-4 right-24 w-16 h-16 bg-green-400/20 rounded-full"></div>
-
-      <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center gap-5">
-        <span className="text-sky-100 text-xs font-bold uppercase tracking-widest">Get Started</span>
-        <h2
-          className="text-2xl md:text-3xl font-extrabold text-white leading-tight"
-          style={{ fontFamily: "'Fraunces', serif" }}
-        >
-          Ready for a spotless space?
+    <div className="w-full bg-gradient-to-r from-sky-600 via-sky-500 to-green-500 py-14 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <p className="text-white/80 text-sm font-semibold uppercase tracking-widest mb-3">Limited Slots Available This Week</p>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+          Ready for a Spotless Space?
         </h2>
-        <p className="text-sky-100 text-sm font-medium">Book your cleaning service today and experience the difference.</p>
-        <Link to="/booking">
-          <button className="px-8 py-3 bg-white text-sky-600 font-bold text-sm rounded-xl shadow-lg hover:bg-green-400 hover:text-white transition-all duration-300 flex items-center gap-2">
-            Book Now
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
-        </Link>
+        <p className="text-sky-100 text-sm md:text-base mb-8 max-w-xl mx-auto">
+          Book today and enjoy professional cleaning with a 100% satisfaction guarantee. First-time customers get priority scheduling!
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Link to="/booking">
+            <button className="flex items-center gap-2 bg-white text-sky-600 hover:bg-gray-50 px-8 py-4 rounded-full font-bold text-sm shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto">
+              Book Now — It's Easy <FaArrowRight size={14} />
+            </button>
+          </Link>
+          <a href="tel:+919876543210">
+            <button className="flex items-center gap-2 border-2 border-white/70 text-white hover:bg-white/10 px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 w-full sm:w-auto">
+              <FaPhone size={14} /> Call Us Now
+            </button>
+          </a>
+        </div>
+
+        <p className="text-sky-200 text-xs mt-6">✓ No hidden charges &nbsp;&nbsp; ✓ Same-day availability &nbsp;&nbsp; ✓ Fully insured team</p>
       </div>
-    </section>
+    </div>
   );
 }
 export default Banner;

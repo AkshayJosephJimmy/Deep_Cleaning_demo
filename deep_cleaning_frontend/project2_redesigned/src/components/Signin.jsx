@@ -1,6 +1,7 @@
 import GoogleLogin from "./GoogleLogin";
 import { useState } from "react";
 import axios from "axios";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 
 function Signin() {
   const [username, setUsername] = useState("");
@@ -20,46 +21,47 @@ function Signin() {
       password: password,
     }).then((response) => {
       console.log(response.data);
-      alert("Sign In successful! Please log in to continue.");
+      alert("Sign up successful! Please log in to continue.");
     }).catch((error) => {
       console.error("Sign In error:", error);
-      alert("Sign In failed. Please check your details and try again.");
+      alert("Sign up failed. Please check your details and try again.");
     });
   }
 
-  const inputClass = "w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all bg-slate-50 hover:bg-white";
+  const inputClass = "w-full border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-all bg-gray-50 hover:bg-white pl-10";
 
   return (
-    <div className="p-6">
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Username</label>
+    <div className="w-full max-w-sm">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div className="relative">
+          <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
           <input type="text" placeholder="Choose a username" onChange={(e) => setUsername(e.target.value)} value={username} className={inputClass} />
         </div>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Email</label>
-          <input type="email" placeholder="you@email.com" onChange={(e) => setEmail(e.target.value)} value={email} className={inputClass} />
+        <div className="relative">
+          <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+          <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)} value={email} className={inputClass} />
         </div>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Password</label>
-          <input type="password" placeholder="••••••••" onChange={(e) => setPassword(e.target.value)} value={password} className={inputClass} />
+        <div className="relative">
+          <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+          <input type="password" placeholder="Create password" onChange={(e) => setPassword(e.target.value)} value={password} className={inputClass} />
         </div>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Confirm Password</label>
-          <input type="password" placeholder="••••••••" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} className={inputClass} />
+        <div className="relative">
+          <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+          <input type="password" placeholder="Confirm password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} className={inputClass} />
         </div>
-        <button type="submit" className="w-full py-2.5 bg-sky-400 hover:bg-green-500 text-white font-bold rounded-xl transition-all duration-300 text-sm mt-1 shadow-md hover:shadow-lg">
-          Create Account
+        <button type="submit" className="w-full py-3.5 bg-sky-500 text-white rounded-full font-bold text-sm hover:bg-green-500 transition-all duration-300 shadow-md hover:shadow-lg mt-1">
+          Create Account →
         </button>
-
-        <div className="relative my-1">
-          <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200"></div></div>
-          <div className="relative flex justify-center"><span className="bg-white px-3 text-xs text-slate-400 font-medium">or continue with</span></div>
+        <div className="flex items-center gap-3 my-1">
+          <div className="flex-1 h-px bg-gray-200" />
+          <span className="text-xs text-gray-400 font-medium">or</span>
+          <div className="flex-1 h-px bg-gray-200" />
         </div>
-
         <GoogleLogin />
       </form>
     </div>
   );
 }
 export default Signin;
+
+//90552372382-lrce96g69748g7br4ncosq9qq9ktn6fi.apps.googleusercontent.com

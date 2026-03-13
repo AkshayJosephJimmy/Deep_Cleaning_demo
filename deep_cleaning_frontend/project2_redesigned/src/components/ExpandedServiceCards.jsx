@@ -2,45 +2,57 @@ function ExpandedServiceCards({ service, onClose }) {
   const Icon = service.icon;
 
   return (
-    <div
-      className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-    >
-      <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden">
-        {/* Top gradient strip */}
-        <div className="h-1.5 bg-gradient-to-r from-sky-400 to-green-400" />
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md mx-auto p-8 relative animate-fade-in">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-red-100 hover:text-red-500 flex items-center justify-center font-bold text-gray-500 transition-all duration-200 text-sm"
+        >
+          ✕
+        </button>
 
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-6">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-100 to-sky-200 flex items-center justify-center">
-              <Icon size={32} className="text-sky-500" />
-            </div>
-            <button
-              onClick={onClose}
-              className="w-9 h-9 rounded-full bg-slate-100 hover:bg-red-100 flex items-center justify-center text-slate-400 hover:text-red-500 transition-all duration-200 font-bold text-sm cursor-pointer"
-            >
-              ✕
-            </button>
+        {/* Icon */}
+        <div className="w-16 h-16 rounded-2xl bg-sky-50 flex items-center justify-center mx-auto mb-5">
+          <Icon size={32} className="text-sky-500" />
+        </div>
+
+        {/* Title */}
+        <h3 className="text-2xl font-extrabold text-gray-900 text-center mb-1">{service.title}</h3>
+
+        {/* Tag + duration */}
+        {service.tag && (
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <span className="bg-sky-100 text-sky-600 text-xs font-bold px-3 py-1 rounded-full">{service.tag}</span>
+            {service.duration && (
+              <span className="bg-green-100 text-green-600 text-xs font-bold px-3 py-1 rounded-full">⏱ {service.duration}</span>
+            )}
           </div>
+        )}
 
-          <h3
-            className="text-2xl font-extrabold text-slate-800 mb-3"
-            style={{ fontFamily: "'Fraunces', serif" }}
-          >
-            {service.title}
-          </h3>
-          <p className="text-slate-600 text-sm leading-relaxed mb-6">{service.details}</p>
+        {/* Details */}
+        <p className="text-gray-600 text-sm leading-relaxed text-center mb-6">{service.details}</p>
 
-          <div className="bg-sky-50 border border-sky-100 rounded-2xl p-4">
-            <div className="flex items-center gap-2 mb-1.5">
-              <svg className="w-4 h-4 text-sky-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-              </svg>
-              <h4 className="font-bold text-sky-700 text-sm">Note</h4>
+        {/* Pricing note */}
+        <div className="bg-gray-50 border border-gray-200 p-4 rounded-2xl mb-6">
+          <div className="flex items-start gap-2">
+            <span className="text-amber-500 text-base mt-0.5">ℹ</span>
+            <div>
+              <h4 className="font-bold text-gray-800 text-sm mb-1">Pricing Note</h4>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Price is based on the size of your property and specific requirements. Contact us for a free quote.
+              </p>
             </div>
-            <p className="text-sky-600 text-xs leading-relaxed">Price is based on the size of your property and the specific services required.</p>
           </div>
         </div>
+
+        {/* CTA */}
+        <button
+          onClick={onClose}
+          className="w-full bg-sky-500 hover:bg-green-500 text-white py-3 rounded-full font-bold transition-all duration-300 text-sm shadow-md hover:shadow-lg"
+        >
+          Book This Service →
+        </button>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext.jsx";
+import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,8 +21,10 @@ function Login() {
       email: email,
       password: password
     }).then((response) => {
+      console.log(response.data);
       localStorage.setItem("token", response.data.token);
       setToken(response.data.token);
+      console.log(token);
       login(response.data.token);
       navigate('/');
     }).catch((error) => {
@@ -30,38 +33,41 @@ function Login() {
     });
   }
 
-  const inputClass = "w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all bg-slate-50 hover:bg-white";
+  const inputClass = "w-full border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-all bg-gray-50 hover:bg-white pl-10";
 
   return (
-    <div className="p-6">
-      {/* Demo credentials notice */}
-      <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3 mb-5 text-xs text-amber-700">
-        <p className="font-bold mb-1">🔑 Demo Credentials</p>
-        <p>Username: <strong>Akshay</strong> &nbsp;|&nbsp; Email: <strong>admin@gmail.com</strong> &nbsp;|&nbsp; Password: <strong>123</strong></p>
+    <div className="w-full max-w-sm">
+      {/* Demo credentials card */}
+      <div className="mb-5 bg-amber-50 border border-amber-200 rounded-2xl p-4">
+        <p className="text-amber-700 text-xs font-bold mb-2 uppercase tracking-wide">Demo Credentials</p>
+        <div className="text-amber-600 text-xs space-y-1">
+          <p><span className="font-semibold">Username:</span> Akshay</p>
+          <p><span className="font-semibold">Email:</span> admin@gmail.com</p>
+          <p><span className="font-semibold">Password:</span> 123</p>
+        </div>
       </div>
 
-      <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Username</label>
-          <input type="text" placeholder="Your username" value={username} onChange={(e) => setUsername(e.target.value)} className={inputClass} />
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div className="relative">
+          <FaUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className={inputClass} />
         </div>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Email</label>
-          <input type="email" placeholder="you@email.com" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
+        <div className="relative">
+          <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+          <input type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClass} />
         </div>
-        <div>
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1 block">Password</label>
-          <input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} className={inputClass} />
+        <div className="relative">
+          <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className={inputClass} />
         </div>
-        <button type="submit" className="w-full py-2.5 bg-sky-400 hover:bg-green-500 text-white font-bold rounded-xl transition-all duration-300 text-sm mt-1 shadow-md hover:shadow-lg">
-          Login
+        <button type="submit" className="w-full py-3.5 bg-sky-500 text-white rounded-full font-bold text-sm hover:bg-green-500 transition-all duration-300 shadow-md hover:shadow-lg mt-1">
+          Sign In →
         </button>
-
-        <div className="relative my-1">
-          <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200"></div></div>
-          <div className="relative flex justify-center"><span className="bg-white px-3 text-xs text-slate-400 font-medium">or continue with</span></div>
+        <div className="flex items-center gap-3 my-1">
+          <div className="flex-1 h-px bg-gray-200" />
+          <span className="text-xs text-gray-400 font-medium">or</span>
+          <div className="flex-1 h-px bg-gray-200" />
         </div>
-
         <GoogleLogin />
       </form>
     </div>
